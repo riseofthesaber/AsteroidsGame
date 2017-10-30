@@ -7,9 +7,16 @@ public void setup()
 }
 public void draw() 
 {
-	ship.show();
+	background(100);
 	ship.setX(200);
 	ship.setY(200);
+	ship.show();
+	ship.move();
   //your code here
 }
+public void keyPressed(){
+	if(key=='1'){
+		ship.turn(10);
+	}
 
+}
