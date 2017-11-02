@@ -1,5 +1,6 @@
 //your variable declarations here
 Spaceship ship = new Spaceship();
+Stars[] backG= new Stars[100];
 boolean le = false;
 boolean ri = false;
 boolean fo = false;
@@ -7,14 +8,23 @@ boolean ba = false;
 boolean fin = false;
 public void setup() 
 {
+	for(int i = 0; i < backG.length; i++)
+	{
+  		backG[i] = new Stars();
+	}
+
 	size(900,900);
   //your code here
 }
 public void draw() 
 {
-	background(100);
+	background(0);
+	for(int i = 0; i < backG.length; i++){
+		backG[i].show();
+	}
 	ship.show();
 	ship.move();
+
 
 	if( le==true){
 		ship.turn(-5);
@@ -48,7 +58,7 @@ public void keyPressed(){
 		ba = true;
 		//ship.accelerate(-.01);
 	}
-	if(key==' '){
+	if(key=='q'){
 		fin = true;
 		ship.setX((int)(Math.random()*899)+1);
 		ship.setDirectionX(0);
