@@ -10,13 +10,13 @@ class Asteroid extends Floater{
     public void setPointDirection(int degrees){myPointDirection=degrees;}   
    public double getPointDirection(){return myPointDirection;}
   //
-  protected int spin= (int)(Math.random*7)-3;
+  protected int spin= (int)(Math.random()*7)-3;
 	public Asteroid(){
 
 	}
 
 	public void move(){
-
+			turn(spin);
 	}
 	
 }
