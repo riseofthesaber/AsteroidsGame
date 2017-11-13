@@ -1,5 +1,6 @@
 //your variable declarations here
 Spaceship ship = new Spaceship();
+Asteroid[] rock = new Asteroid[25];
 Stars[] backG= new Stars[100];
 boolean le = false;
 boolean ri = false;
@@ -12,7 +13,9 @@ public void setup()
 	{
   		backG[i] = new Stars();
 	}
-
+	for(int i = 0; i < rock.length; i++){
+		rock[i] = new Asteroid();
+	}
 	size(900,900);
   //your code here
 }
@@ -24,6 +27,10 @@ public void draw()
 	}
 	ship.show();
 	ship.move();
+		for(int i = 0; i < rock.length; i++){
+		rock[i].show();
+		rock[i].move();
+	}
 
 
 	if( le==true){
