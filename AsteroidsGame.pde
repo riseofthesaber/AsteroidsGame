@@ -7,16 +7,16 @@ boolean ri = false;
 boolean fo = false;
 boolean ba = false;
 boolean fin = false;
+int numRock=(int)(Math.random()*11)+10;
 public void setup() 
 {
-	rock.add(new Asteroid());
+	for(int i = 0; i < numRock ; i++){
+	rock.add(new Asteroid());}
 	for(int i = 0; i < backG.length; i++)
 	{
   		backG[i] = new Stars();
 	}
-	//for(int i = 0; i < rock.size(); i++){
-		//rock.get(i) = new Asteroid();
-	//}
+	
 	size(900,900);
   //your code here
 }
