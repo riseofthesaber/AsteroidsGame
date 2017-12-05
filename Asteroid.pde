@@ -22,18 +22,32 @@ class Asteroid extends Floater{
         myColor=color(255-15,255-200,255-255);
         myDirectionX=(int)(Math.random()*3)+1;
         myDirectionY=(int)(Math.random()*3)+1;
-        if (Math.random()<5){
-  			myDirectionX=myDirectionX*-1;
-  		}
-  		if (Math.random()<5){
-  		myDirectionY=myDirectionY*-1;
-  		}
-  } 
-  public void move(){
-  	spin= (int)(Math.random()*3)+1;
-  	if (Math.random()<5){
+        spin= (int)(Math.random()*3)+1;
+    if (Math.random()<0.5){
   		spin=spin*-1;
   	}
+  	if (Math.random()<0.5){
+  			myDirectionX=myDirectionX*-1;
+  	}
+  	if (Math.random()<0.5){
+  		myDirectionY=myDirectionY*-1;
+  	}
+  	
+
+  } 
+  public void move(){
+  	
+  	//
+  	//if (Math.random()<0.5){
+  //		spin=spin*-1;
+  	//}
+  	//  if (Math.random()<5){
+  	// 		myDirectionX=myDirectionX*-1;
+  	// }
+  	// if (Math.random()<5){
+  	// 	myDirectionY=myDirectionY*-1;
+  	// }
+  	//
       turn(spin);
       super.move();
   }

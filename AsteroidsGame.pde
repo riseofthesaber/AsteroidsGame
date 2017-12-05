@@ -31,6 +31,10 @@ public void draw()
 		for(int i = 0; i < rock.size(); i++){
 		rock.get(i).show();
 		rock.get(i).move();
+		if(distance(rock.get(i).getX(),ship.getX())<2 ||
+		   distance(rock.get(i).getY(),ship.getY())<2){
+			rock.remove(i);
+		}
 	}
 
 
@@ -49,6 +53,13 @@ public void draw()
 
   //your code here
 }
+public int distance(int a,int b){
+	int melody=a-b;
+	if(melody<0)
+		melody=melody*-1;
+	return melody;
+}
+
 public void keyPressed(){
 	if(key=='a'){
 		le = true;
