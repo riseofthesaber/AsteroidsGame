@@ -7,11 +7,13 @@ boolean ri = false;
 boolean fo = false;
 boolean ba = false;
 boolean fin = false;
-int numRock=(int)(Math.random()*11)+10;
+int numRock=(int)(Math.random()*21)+10;
+int hits=0;
 public void setup() 
 {
 	for(int i = 0; i < numRock ; i++){
-	rock.add(new Asteroid());}
+		rock.add(new Asteroid());
+	}
 	for(int i = 0; i < backG.length; i++)
 	{
   		backG[i] = new Stars();
@@ -31,9 +33,9 @@ public void draw()
 		for(int i = 0; i < rock.size(); i++){
 		rock.get(i).show();
 		rock.get(i).move();
-		if(distance(rock.get(i).getX(),ship.getX())<2 ||
-		   distance(rock.get(i).getY(),ship.getY())<2){
+		if(dist(rock.get(i).getX(),rock.get(i).getY(),ship.getX(),ship.getY())<20){
 			rock.remove(i);
+			hits++;
 		}
 	}
 
@@ -45,7 +47,7 @@ public void draw()
 		ship.turn(5);
 	}
 	if( fo==true){
-		ship.accelerate(.05);
+		ship.accelerate(.25);
 	}
 	if(ba==true){
 		ship.accelerate(-.005);
@@ -53,12 +55,7 @@ public void draw()
 
   //your code here
 }
-public int distance(int a,int b){
-	int melody=a-b;
-	if(melody<0)
-		melody=melody*-1;
-	return melody;
-}
+
 
 public void keyPressed(){
 	if(key=='a'){
