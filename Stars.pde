@@ -3,8 +3,8 @@ class Stars //note that this class does NOT extend Floater
   //your code here
   protected double myX,myY;
   public Stars(){
-  	myX=(int)(Math.random()*900);
-  	myY=(int)(Math.random()*900);
+  	myX=(int)(Math.random()*width);
+  	myY=(int)(Math.random()*height);
   }
   public void show(){
   	fill(255);

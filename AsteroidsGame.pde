@@ -1,4 +1,5 @@
 //your variable declarations here
+
 Spaceship ship = new Spaceship();
 ArrayList<Asteroid> rock = new ArrayList<Asteroid>();
 Stars[] backG= new Stars[100];
@@ -19,7 +20,7 @@ public void setup()
   		backG[i] = new Stars();
 	}
 	
-	size(900,900);
+	size(900,675);
   //your code here
 }
 public void draw() 
@@ -72,7 +73,7 @@ public void keyPressed(){
 	}
 		if(key=='s'){
 		ba = true;
-		//ship.accelerate(-.01);
+		//ship.accelerate(-.01);d
 	}
 	if(key=='q'){
 		fin = true;
