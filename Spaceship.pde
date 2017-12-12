@@ -28,7 +28,7 @@ class Spaceship extends Floater
 			myDirectionY=0;
 			myPointDirection=270;
 			myColor=color(15,200,255);
-println("Xval: "+Xmid);
-println("Xtotal: "+width);
+// println("Xval: "+Xmid);
+// println("Xtotal: "+width);
     }
 }

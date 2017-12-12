@@ -1,6 +1,6 @@
 //your variable declarations here
 
-Spaceship ship = new Spaceship();
+Spaceship ship;
 ArrayList<Asteroid> rock = new ArrayList<Asteroid>();
 Stars[] backG= new Stars[100];
 boolean le = false;
@@ -12,6 +12,8 @@ int numRock=(int)(Math.random()*21)+10;
 int hits=0;
 public void setup() 
 {
+		size(900,675);
+		ship = new Spaceship();
 	for(int i = 0; i < numRock ; i++){
 		rock.add(new Asteroid());
 	}
