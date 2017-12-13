@@ -15,7 +15,17 @@ class Bullet extends Floater
 	public Bullet(Spaceship Alpha) {
 		myCenterX=Alpha.getX();
 		myCenterY=Alpha.getY();
+		myPointDirection=Alpha.getPointDirection();
+		double dRadians =myPointDirection*(Math.PI/180);
+		myDirectionX=5 * Math.cos(dRadians)+ Alpha.getDirectionX();
+		myDirectionY=5 * Math.sin(dRadians)+ Alpha.getDirectionY();
+		myColor=color(240,55,0);
 	}
 
+	public void show(){
+		ellipse((float)myCenterX,(float)myCenterY, 10, 10);
+		super.show();
 
+
+	}
 }
