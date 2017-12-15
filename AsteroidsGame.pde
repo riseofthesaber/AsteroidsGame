@@ -1,5 +1,4 @@
 //your variable declarations here
-
 Spaceship ship;
 ArrayList<Bullet> blast = new ArrayList<Bullet>();
 ArrayList<Asteroid> rock = new ArrayList<Asteroid>();
@@ -12,6 +11,9 @@ boolean fin = false;
 boolean gun = false;
 int numRock=(int)(Math.random()*21)+10;
 int hits=0;
+int score=0;
+int charge=10;
+int range= 200;
 public void setup() 
 {
 	size(900,675);
@@ -29,6 +31,7 @@ public void setup()
 public void draw() 
 {
 	background(0);
+
 	for(int i = 0; i < backG.length; i++){
 		backG[i].show();
 	}
@@ -38,6 +41,19 @@ public void draw()
 	for(int i = 0; i < blast.size(); i++){
 		blast.get(i).show();
 		blast.get(i).move();
+			for(int blam=0; blam<rock.size(); blam++){
+				if(dist(rock.get(blam).getX(),rock.get(blam).getY(),blast.get(i).getX(),blast.get(i).getY())<15){
+					rock.remove(blam);
+					blast.remove(i);
+					break;
+				}
+			}
+			// if (blast.get(i).getlife() >= range){
+			// 	blast.remove(i);
+			// 	break;
+			// }else{
+			// 	blast.get(i).setLife();
+			// }
 	}
 	for(int i = 0; i < rock.size(); i++){
 		rock.get(i).show();
@@ -63,6 +79,7 @@ public void draw()
 	}
 	if(gun==true){
 		blast.add(new Bullet(ship));
+		gun=false;
 	}
   //your code here
 }
