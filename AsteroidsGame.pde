@@ -63,6 +63,12 @@ public void draw()
 			hits++;
 		}
 	}
+	if(rock.size()<2){
+		int moar= (int)(Math.random()*40)+1;
+			for(int i = 0; i < moar ; i++){
+				rock.add(new Asteroid());
+			}
+	}
 
 
 	if( le==true){
