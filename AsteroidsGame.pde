@@ -9,11 +9,15 @@ boolean fo = false;
 boolean ba = false;
 boolean fin = false;
 boolean gun = false;
+boolean rapidshot = false;
+String type="Normal";
 int numRock=(int)(Math.random()*21)+10;
 int hits=0;
 int score=0;
 int charge=10;
-int range= 200;
+int goal=1000;
+int needed;
+
 public void setup() 
 {
 	size(900,675);
@@ -31,6 +35,19 @@ public void setup()
 public void draw() 
 {
 	background(0);
+	//display hp and score
+	if(goal-charge>0){
+		needed= goal-charge;
+	}else{
+		needed=0;
+	}
+  textSize(40);
+  fill(200, 200, 200);
+  text("Energy: "+ charge, 600,100);
+  text("Type: "+ type,100,100 );
+   text("Score: "+ score ,100,600 );
+    textSize(20);
+   text("Energy Needed: "+needed,600,600); 
 
 	for(int i = 0; i < backG.length; i++){
 		backG[i].show();
@@ -45,25 +62,25 @@ public void draw()
 				if(dist(rock.get(blam).getX(),rock.get(blam).getY(),blast.get(i).getX(),blast.get(i).getY())<15){
 					rock.remove(blam);
 					blast.remove(i);
+					charge++;
 					break;
 				}
 			}
-			// if (blast.get(i).getlife() >= range){
-			// 	blast.remove(i);
-			// 	break;
-			// }else{
-			// 	blast.get(i).setLife();
-			// }
+
 	}
 	for(int i = 0; i < rock.size(); i++){
 		rock.get(i).show();
 		rock.get(i).move();
 		if(dist(rock.get(i).getX(),rock.get(i).getY(),ship.getX(),ship.getY())<20){
 			rock.remove(i);
-			hits++;
+			if (charge>0){
+				charge--;
+			}
 		}
 	}
-	if(rock.size()<2){
+	if(rock.size()<1){
+		charge=charge+score;
+		score++;
 		int moar= (int)(Math.random()*40)+1;
 			for(int i = 0; i < moar ; i++){
 				rock.add(new Asteroid());
@@ -78,14 +95,17 @@ public void draw()
 		ship.turn(5);
 	}
 	if( fo==true){
-		ship.accelerate(.25);
+		ship.accelerate(.125);
 	}
 	if(ba==true){
-		ship.accelerate(-.005);
+		ship.accelerate(-.025);
 	}
-	if(gun==true){
+	if(gun==true && charge>0){
 		blast.add(new Bullet(ship));
-		gun=false;
+		charge--;
+		if(rapidshot==false){
+			gun=false;
+		}
 	}
   //your code here
 }
@@ -108,10 +128,20 @@ public void keyPressed(){
 		ba = true;
 		//ship.accelerate(-.01);d
 	}
-	if(key==32){
+	if(key==32 && charge>0){
 		gun = true;
 	}
-	if(key=='q'){
+	if(key=='e'){
+		if(rapidshot==false){
+			rapidshot=true;
+			type="Rapid";
+		}else{
+			rapidshot=false;
+			type="Normal";
+		}
+	}
+	if(key=='q'&&charge>=goal){
+		charge-=goal;
 		fin = true;
 		ship.setX((int)(Math.random()*899)+1);
 		ship.setDirectionX(0);
@@ -141,5 +171,6 @@ void keyReleased()
 	if(key==32){
 		gun = false;
 	}
+
 }
 
